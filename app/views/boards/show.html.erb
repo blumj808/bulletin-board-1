@@ -20,7 +20,7 @@
     </div>
 
      <div>
-    <label for="board_id_field">Board</label><input type="text" id = "board_id_field" name = "board_id_field">
+    <label for="board_id_field">Board</label><input type="text" id = "board_id_field" name = "board_id_field" value=<%=@the_board.id %>>
     </div>
 
     <button>Add post</button>
@@ -29,10 +29,10 @@
 <h2>Active Posts</h2>
 
 <% matching_posts = Post.where({:board_id => 
- @the_board.id}) %>
+ @the_board.id}).order({:expires_on => :asc }) %>
 
 
-<table>
+<table border="1">
 <tr>
 <th>Title</th>
 <th>Body</th>
@@ -44,8 +44,8 @@
 <tr>
 <td><%= a_post.title %></td>
 <td><%= a_post.body %></td>
-<td><%= a_post.created_at %></td>
-<td><%= a_post.expires_on%></td>
+<td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
+<td><%= a_post.expires_on.strftime("%b %e, %Y")%></td>
 </tr>
 
 
