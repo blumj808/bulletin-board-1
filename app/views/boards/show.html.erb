@@ -19,7 +19,7 @@
     <label for="expires_on_field">Expires on</label><input type="date" id = "expires_on_field" name = "expires_on">
     </div>
 
- <input type="hidden" id = "board_id_field" name = "board_id_field" value="<%=@the_board.id %>">
+ <input type="hidden" id = "board_id_field" name = "board_id_field" value="<%= @the_board.id %>">
  
 
     <button>Add post</button>
@@ -43,8 +43,8 @@
 <tr>
 <td><%= a_post.title %></td>
 <td><%= a_post.body %></td>
-<td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
-<td><%= a_post.expires_on.strftime("%b %e, %Y")%></td>
+<td><%= a_post.created_at.iso8601 %></td>
+<td><%= a_post.expires_on.iso8601 %></td>
 </tr>
 
 
